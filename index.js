@@ -19,11 +19,17 @@ app.use(
 
 app.get("/", (req, res) => {
   let name = req.session.name;
+  if (!name){
+    res.redirect("/form")
+  }
   res.render("index.ejs", { name });
 });
 
 app.get("/age", (req, res) => {
   let age = req.session.age;
+  if (!age){
+    res.redirect("/form")
+  }
   res.render("age.ejs", { age });
 });
 
